@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    creationTimestamp: null
+    labels:
+    name: frontend
+spec:
+    replicas: {{.Values.replicaCount}}
+    selector:
+      matchLabels:
+        deploymentconfig: frontend
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          deploymentconfig: frontend
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          image:  {{.Values.imagename}}
+          name: frontend
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          - containerPort: 8080
+            protocol: TCP
+        imagePullSecrets:
+        - name: regcred
