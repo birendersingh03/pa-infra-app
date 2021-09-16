@@ -1,0 +1,3 @@
+replicaCount: 1
+imagename: nixnamaedu/backend-final
+imagetag: 1.1
